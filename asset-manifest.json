@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/veleno-verde/static/css/main.e6c13ad2.css",
-    "main.js": "/veleno-verde/static/js/main.40bab357.js",
+    "main.css": "/veleno-verde/static/css/main.779be911.css",
+    "main.js": "/veleno-verde/static/js/main.4a541b27.js",
     "static/js/885.dbd0c70b.chunk.js": "/veleno-verde/static/js/885.dbd0c70b.chunk.js",
     "static/js/453.a77057a9.chunk.js": "/veleno-verde/static/js/453.a77057a9.chunk.js",
     "static/media/Terra.png": "/veleno-verde/static/media/Terra.b5e914be227c5f2063df.png",
@@ -14,13 +14,13 @@
     "static/media/Caraffa1.png": "/veleno-verde/static/media/Caraffa1.9b3f426f430443291771.png",
     "static/media/CaraffaVuota.png": "/veleno-verde/static/media/CaraffaVuota.82dd8899e0b5e4d9b3f1.png",
     "index.html": "/veleno-verde/index.html",
-    "main.e6c13ad2.css.map": "/veleno-verde/static/css/main.e6c13ad2.css.map",
-    "main.40bab357.js.map": "/veleno-verde/static/js/main.40bab357.js.map",
+    "main.779be911.css.map": "/veleno-verde/static/css/main.779be911.css.map",
+    "main.4a541b27.js.map": "/veleno-verde/static/js/main.4a541b27.js.map",
     "885.dbd0c70b.chunk.js.map": "/veleno-verde/static/js/885.dbd0c70b.chunk.js.map",
     "453.a77057a9.chunk.js.map": "/veleno-verde/static/js/453.a77057a9.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.e6c13ad2.css",
-    "static/js/main.40bab357.js"
+    "static/css/main.779be911.css",
+    "static/js/main.4a541b27.js"
   ]
 }
