@@ -49,6 +49,7 @@ const Sidebar = styled(SidebarComponent)`
   .items {
     top: 0;
     z-index: 9;
+    padding: 20px 0;
     height: 100vh;
     background-color: #fff;
     position: absolute;
@@ -56,6 +57,7 @@ const Sidebar = styled(SidebarComponent)`
     right: ${({ isOpen }) => (isOpen ? "0" : "-20%")};
     > * {
       max-width: 100%;
+      margin-bottom: 20px;
     }
   }
   button {

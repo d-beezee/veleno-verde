@@ -41,12 +41,18 @@ const SticksComponent = ({
     [state.beaker, state.stick]
   );
   return (
-    <>
+    <div
+      style={{
+        width: "100%",
+        display: "flex",
+        justifyContent: "center",
+      }}
+    >
       <Container ref={dragRef} className={className}>
         <img className="unused" src={StickUnused} alt="Stick" />
         <img className="used" src={StickUsed} alt="Stick" />
       </Container>
-    </>
+    </div>
   );
 };
 
