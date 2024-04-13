@@ -5,6 +5,7 @@ import useSound from "use-sound";
 
 import ItemTypes from "../../ItemTypes";
 import { State, useLocalStorage } from "../../LocalStorageProvider";
+import bubbles from "./assets/bubbles.mp3";
 import Caraffa1 from "./assets/Caraffa1.png";
 import Caraffa2 from "./assets/Caraffa2.png";
 import Caraffa3 from "./assets/Caraffa3.png";
@@ -20,6 +21,7 @@ function Beaker() {
   const [shakeLevel, setShakeLevel] = useState(0);
   const [level, setLevel] = useState(0);
   const [play] = useSound(filling);
+  const [playBubbles] = useSound(bubbles);
 
   const [, drop] = useDrop(() => ({
     accept: ItemTypes.BEAKER_INGREDIENT,
@@ -31,6 +33,7 @@ function Beaker() {
   }
   function shake() {
     if (shakeLevel >= 10) {
+      playBubbles();
       setState({ beaker: "shaken" });
       return;
     }

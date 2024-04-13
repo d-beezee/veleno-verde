@@ -1,8 +1,10 @@
 import { useDrag } from "react-dnd";
 import styled from "styled-components";
+import useSound from "use-sound";
 
 import ItemTypes from "../../ItemTypes";
 import { State, useLocalStorage } from "../../LocalStorageProvider";
+import drops from "./assets/drops.mp3";
 import StickUnused from "./assets/StickUnused.png";
 import StickUsed from "./assets/StickUsed.png";
 
@@ -24,6 +26,7 @@ const SticksComponent = ({
   state: State;
   setState: (s: State) => void;
 }) => {
+  const [play] = useSound(drops);
   const [, dragRef] = useDrag(
     () => ({
       type: ItemTypes.BEAKER_INGREDIENT,
@@ -34,7 +37,7 @@ const SticksComponent = ({
         if (dropResult.name !== ItemTypes.BEAKER) return;
         if (state.beaker !== "shaken") return;
         if (state.stick === "used") return;
-
+        play();
         setState({ stick: "used" });
       },
     }),
