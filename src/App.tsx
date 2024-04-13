@@ -1,23 +1,27 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+
+import Beaker from "./components/Beaker";
+import Dirt from "./components/Dirt";
+import Stick from "./components/Stick";
+import { clearLocalStorage } from "./LocalStorageProvider";
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
+        <div className="container">
+          <Beaker />
+          <Dirt />
+          <Stick />
+        </div>
+        <button
+          onClick={() => {
+            clearLocalStorage();
+            window.location.reload();
+          }}
         >
-          Learn React
-        </a>
+          Reset
+        </button>
       </header>
     </div>
   );

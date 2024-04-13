@@ -24,6 +24,11 @@
   color: white;
 }
 
+.App-header .container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 .App-link {
   color: #61dafb;
 }
