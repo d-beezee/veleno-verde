@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
+import { useDrop } from "react-dnd";
 import useSound from "use-sound";
 
+import ItemTypes from "../../ItemTypes";
 import { State, useLocalStorage } from "../../LocalStorageProvider";
 import Caraffa1 from "./assets/Caraffa1.png";
 import Caraffa2 from "./assets/Caraffa2.png";
@@ -16,6 +18,11 @@ function Beaker() {
   const [status, setStatus] = useState<State["beaker"]>("empty");
   const [level, setLevel] = useState(0);
   const [play] = useSound(filling);
+
+  const [, drop] = useDrop(() => ({
+    accept: ItemTypes.BEAKER_INGREDIENT,
+    drop: () => ({ name: ItemTypes.BEAKER }),
+  }));
 
   function fill() {
     setStatus("filling");
@@ -54,7 +61,7 @@ function Beaker() {
   }, [status, level, play, setState]);
 
   return (
-    <div>
+    <div ref={drop}>
       <BeakerImage status={status} filling={level} fill={fill} shake={shake} />
     </div>
   );
