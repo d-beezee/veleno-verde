@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useDrop } from "react-dnd";
+import styled from "styled-components";
 import useSound from "use-sound";
 
 import ItemTypes from "../../ItemTypes";
@@ -16,6 +17,7 @@ import filling from "./assets/filling.mp3";
 function Beaker() {
   const [state, setState] = useLocalStorage();
   const [status, setStatus] = useState<State["beaker"]>("empty");
+  const [shakeLevel, setShakeLevel] = useState(0);
   const [level, setLevel] = useState(0);
   const [play] = useSound(filling);
 
@@ -28,7 +30,11 @@ function Beaker() {
     setStatus("filling");
   }
   function shake() {
-    setState({ beaker: "shaken" });
+    if (shakeLevel >= 10) {
+      setState({ beaker: "shaken" });
+      return;
+    }
+    setShakeLevel(shakeLevel + 1);
   }
 
   useEffect(() => {
@@ -62,7 +68,13 @@ function Beaker() {
 
   return (
     <div ref={drop}>
-      <BeakerImage status={status} filling={level} fill={fill} shake={shake} />
+      <BeakerImage
+        shakeLevel={shakeLevel}
+        status={status}
+        filling={level}
+        fill={fill}
+        shake={shake}
+      />
     </div>
   );
 }
@@ -72,24 +84,65 @@ const BeakerImage = ({
   filling,
   fill,
   shake,
+  shakeLevel,
 }: {
   status: State["beaker"];
   filling: number;
   fill: () => void;
   shake: () => void;
+  shakeLevel: number;
 }) => {
   if (status === "empty")
     return <img onClick={fill} src={CaraffaVuota} alt="beaker" />;
   if (status === "full") return <img src={Caraffa4} alt="beaker" />;
-  if (status === "withdirt")
-    return <img onClick={shake} src={CaraffaConTerra} alt="beaker" />;
-  if (status === "shaken")
-    return <img src={CaraffaConTerraSciolta} alt="beaker" />;
+  if (["withdirt", "shaken"].includes(status as string))
+    return (
+      <BeakerConTerra shakeLevel={shakeLevel} status={status} shake={shake} />
+    );
   if (filling === 0) return <img src={Caraffa1} alt="beaker" />;
   if (filling === 1) return <img src={Caraffa2} alt="beaker" />;
   if (filling === 2) return <img src={Caraffa3} alt="beaker" />;
   if (filling === 3) return <img src={Caraffa4} alt="beaker" />;
   return null;
 };
+
+const BeakerConTerraComponent = ({
+  status,
+  className,
+  shake,
+  shakeLevel,
+}: {
+  status: State["beaker"];
+  className?: string;
+  shake: () => void;
+  shakeLevel: number;
+}) => {
+  return (
+    <div className={className}>
+      <img
+        className="withdirt"
+        onClick={shake}
+        src={CaraffaConTerra}
+        alt="beaker"
+      />
+      <img className="shaken" src={CaraffaConTerraSciolta} alt="beaker" />
+    </div>
+  );
+};
+
+const BeakerConTerra = styled(BeakerConTerraComponent)`
+  .withdirt {
+    position: relative;
+    left: 25%;
+    ${({ status }) => status === "shaken" && `opacity:0;`}
+  }
+  .shaken {
+    position: relative;
+    left: -25%;
+    ${({ status, shakeLevel }) =>
+      status === "withdirt" &&
+      `opacity:${shakeLevel * 10}%; z-index:1;pointer-events:none;`}
+  }
+`;
 
 export default Beaker;

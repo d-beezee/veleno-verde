@@ -1,6 +1,6 @@
 import "./App.css";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import styled from "styled-components";
 
 import CaretRight from "./caret-right.png";
@@ -73,6 +73,9 @@ const Sidebar = styled(SidebarComponent)`
 
 function App() {
   const [isOpen, setIsOpen] = useState(false);
+  useEffect(() => {
+    document.body.style.overflow = "hidden";
+  }, []);
   return (
     <div className="App">
       <Header>
