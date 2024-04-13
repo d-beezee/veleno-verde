@@ -10,6 +10,11 @@ const Container = styled.div`
     max-width: 100%;
   }
 `;
+
+const originalDimensions = {
+  width: 595,
+  height: 419,
+};
 const Dirt = () => {
   const [state, setState] = useLocalStorage();
   const [, dragRef, preview] = useDrag(
@@ -18,7 +23,10 @@ const Dirt = () => {
       item: {
         name: "Dirt",
         image: Terra,
-        style: { maxWidth: "400px", left: "-50%", top: "-25%" },
+        style: {
+          left: `-${originalDimensions.width / 2}px`,
+          top: `-${originalDimensions.height / 2}px`,
+        },
       },
       end: (item, monitor) => {
         const dropResult = monitor.getDropResult<{ name: string }>();
