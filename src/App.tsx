@@ -84,6 +84,14 @@ function App() {
           </Sidebar>
         </div>
         <button
+          style={{
+            bottom: 0,
+            position: "absolute",
+            left: 0,
+            right: 0,
+            fontSize: "120%",
+            width: "100%",
+          }}
           onClick={() => {
             clearLocalStorage();
             window.location.reload();
