@@ -48,6 +48,7 @@ const Sidebar = styled(SidebarComponent)`
   height: 100vh;
   .items {
     top: 0;
+    z-index: 9;
     height: 100vh;
     background-color: #fff;
     position: absolute;

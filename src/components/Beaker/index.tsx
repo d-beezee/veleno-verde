@@ -119,26 +119,32 @@ const BeakerConTerraComponent = ({
 }) => {
   return (
     <div className={className}>
-      <img
-        className="withdirt"
-        onClick={shake}
-        src={CaraffaConTerra}
-        alt="beaker"
-      />
-      <img className="shaken" src={CaraffaConTerraSciolta} alt="beaker" />
+      <div className="withdirt">
+        <img onClick={shake} src={CaraffaConTerra} alt="beaker" />
+      </div>
+      <div className="shaken">
+        <img src={CaraffaConTerraSciolta} alt="beaker" />
+      </div>
     </div>
   );
 };
 
 const BeakerConTerra = styled(BeakerConTerraComponent)`
+  .withdirt,
+  .shaken {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
   .withdirt {
-    position: relative;
-    left: 25%;
     ${({ status }) => status === "shaken" && `opacity:0;`}
   }
   .shaken {
-    position: relative;
-    left: -25%;
     ${({ status, shakeLevel }) =>
       status === "withdirt" &&
       `opacity:${shakeLevel * 10}%; z-index:1;pointer-events:none;`}
