@@ -7,7 +7,7 @@ import CaretRight from "./caret-right.png";
 import Beaker from "./components/Beaker";
 import Dirt from "./components/Dirt";
 import Stick from "./components/Stick";
-import { clearLocalStorage, useLocalStorage } from "./LocalStorageProvider";
+import { clearLocalStorage } from "./LocalStorageProvider";
 
 const Header = styled.header`
   background-color: #282c34;
@@ -72,7 +72,6 @@ const Sidebar = styled(SidebarComponent)`
 `;
 
 function App() {
-  const [state] = useLocalStorage();
   const [isOpen, setIsOpen] = useState(false);
   return (
     <div className="App">
