@@ -51,7 +51,7 @@ function Beaker() {
         }, 700);
       }
     }
-  }, [status, level]);
+  }, [status, level, play, setState]);
 
   return (
     <div>
